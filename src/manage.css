@@ -1,0 +1,80 @@
+.hasdata{
+   width: auto;
+   margin:0 auto;
+}
+.hasdata > tbody{
+   /*background-color: LightGoldenRodYellow;*/
+   border: none ;
+}
+.hasdata > tbody > tr > td:nth-child(1){
+  width: auto;
+}
+.hasdata > tbody > tr > td:nth-child(2){
+  width: 10px;
+  text-align: right;
+}
+.datatable > tbody > tr, .timeregion > tbody > tr{
+   border-bottom: 2px solid white;
+}
+.timeregion, .timeregiontable > tbody > tr > td{
+   width: 50px;
+   text-align: center;
+}
+.timecontrol{
+   width: 30px;
+   text-align: center;
+}
+td{
+   width: 200px;
+}
+.timeslot{
+   background-color: #CCCCCC;
+}
+.user{
+   width: 70px;
+   background-color: #B8D7DE;
+}
+.month-div{
+   margin-top:48px;
+   line-height:100%;
+}
+.month{
+   text-align: center;
+   width: 100%;
+}
+.jumbotron{
+   padding-top: 25px;
+   padding-bottom: 12px;
+}
+.width-control{
+   width: 130px;
+}
+.height-control{
+   height: 130px;
+}
+thead > tr {
+   background-color: #FFFFFF;
+   height: 50px;
+}
+.navbar-inverse{
+   background-color: #28477D !important;
+}
+.navbar-inverse .navbar-brand{
+   color: #FFFFFF !important;
+}
+
+.navbar-inverse .navbar-nav>li>a{
+   color: #FFFFFF !important;
+}
+.main-table > thead, tbody{
+   border-left: 2px solid white;
+}
+.left{
+   text-align: left;
+}
+.right{
+   text-align: right;
+}
+.date{
+   text-align: center;
+}
