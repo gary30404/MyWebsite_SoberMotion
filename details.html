@@ -1,0 +1,554 @@
+<html>
+<head>
+    <title>細節</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+<body>
+<style type="text/css">
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
+@import url('https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css');
+#container{
+    border:1px;
+    width:100%;
+    height: 100%;
+    margin:0 auto;
+}
+#headbox{
+    width:97.5%;
+    height:25%;
+    border:0px;
+    margin:0 auto;
+    margin-left:1.3%;
+    margin-bottom:1%;
+    background-color: #B0E0E6;
+    overflow:scroll;
+}
+#sidebar{
+    width:20%;
+    height:60%;
+    border:1px;
+    margin-left:1.3%;
+    margin-top:0.2%;
+    margin-bottom:1%;
+    float:left;
+    background-color: #B0E0E6;
+    overflow:scroll;
+}
+#sidebody_1{
+    width:67%;
+    height:60%;
+    border:1px;
+    margin-left:2%;
+    margin-top:0.2%;
+    margin-bottom:1%;
+    float:left;
+    overflow:scroll;
+}
+#sidebody_2{
+    width:8.5%;
+    height:60%;
+    border:1px;
+    margin-top:0.2%;
+    margin-bottom:1%;
+    float:left;
+    overflow:hidden;
+}
+#sidebar2{
+    width:20%;
+    height:65%;
+    border:1px;
+    margin-left:1.3%;
+    margin-top:0.2%;
+    margin-bottom:1%;
+    float:left;
+    background-color: #B0E0E6;
+    overflow:scroll;
+}
+#sidebody2_1{
+    width:67%;
+    height:65%;
+    border:1px;
+    margin-left:2%;
+    margin-top:0.2%;
+    margin-bottom:1%;
+    float:left;
+    overflow:scroll;
+}
+#sidebody2_2{
+    width:8.5%;
+    height:65%;
+    border:1px;
+    margin-top:0.2%;
+    margin-bottom:1%;
+    float:left;
+    overflow:hidden;
+}
+#clear{
+    clear:both;
+}
+#footer{
+    width:97.5%;
+    height:60%;
+    border:1px;
+    margin-left:1.3%;
+    margin-top:0.2%;
+    margin-right:1%;
+    margin-bottom:1%;
+}
+.content {
+    max-width: 800px;
+    margin: auto;
+    padding: 16px 32px;
+}
+.header {
+    text-align: center;
+    padding: 32px 0;
+}
+.wrapper {
+    width:100%;
+    height: 100%;
+    padding: 16px 0;
+    position: relative;
+}
+.wrapper.col-2 {
+    display: inline-block;
+    min-height: 256px;
+    width: 49%;
+}
+@media (max-width: 400px) {
+    .wrapper.col-2 {
+        width: 100%
+    }
+}
+.wrapper canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+    margin-left:35px;
+}
+th{
+    height: 50px;
+    text-align: left;
+    border:1px;
+}
+td{
+    text-align: left;
+    background-color: #DDDDDD;
+    border:1px;
+}
+tr:nth-child(even){background-color: #f2f2f2}
+
+   #chartjs-tooltip {
+       opacity: 1;
+       position: absolute;
+       background: rgba(0, 0, 0, .7);
+       color: white;
+       padding: 3px;
+       border-radius: 3px;
+       -webkit-transition: all .1s ease;
+       transition: all .1s ease;
+       pointer-events: none;
+       -webkit-transform: translate(-50%, 0);
+       transform: translate(-50%, 0);
+   }
+   #chartjs-tooltip.below {
+       -webkit-transform: translate(-50%, 0);
+       transform: translate(-50%, 0);
+   }
+   #chartjs-tooltip.below:before {
+       border: solid;
+       border-color: #111 transparent;
+       border-color: rgba(0, 0, 0, .8) transparent;
+       border-width: 0 8px 8px 8px;
+       bottom: 1em;
+       content:"";
+       display: block;
+       left: 50%;
+       position: absolute;
+       z-index: 99;
+       -webkit-transform: translate(-50%, -100%);
+       transform: translate(-50%, -100%);
+   }
+   #chartjs-tooltip.above {
+       -webkit-transform: translate(-50%, -100%);
+       transform: translate(-50%, -100%);
+   }
+   #chartjs-tooltip.above:before {
+       border: solid;
+       border-color: #111 transparent;
+       border-color: rgba(0, 0, 0, .8) transparent;
+       border-width: 8px 8px 0 8px;
+       bottom: 1em;
+       content:"";
+       display: block;
+       left: 50%;
+       top: 100%;
+       position: absolute;
+       z-index: 99;
+       -webkit-transform: translate(-50%, 0);
+       transform: translate(-50%, 0);
+   }
+   .tabs {
+    width:100%;
+    display:inline-block;
+}
+ 
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+ 
+        .tab-links a {
+            padding:9px 15px;
+            display:inline-block;
+            border-radius:3px 3px 0px 0px;
+            background:#7FB5DA;
+            font-size:16px;
+            font-weight:600;
+            color:#4c4c4c;
+            transition:all linear 0.15s;
+        }
+ 
+        .tab-links a:hover {
+            background:#a7cce5;
+            text-decoration:none;
+        }
+ 
+    li.active a, li.active a:hover {
+        background:#fff;
+        color:#4c4c4c;
+    }
+ 
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        padding:15px;
+        border-radius:3px;
+         /*box-shadow:-1px 1px 1px rgba(0,0,0,0.15);*/
+        background:#fff;
+    }
+ 
+    .tab {
+        display:none;
+    }
+ 
+    .tab.active {
+        display:block;
+    }
+   
+</style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card-2">
+        <div class="w3-left w3-hide-small">
+            <img src="logo.png" alt="Italian Trulli" width="35" height="35">
+       </div>
+        <a href="index.html" class="w3-bar-item w3-button"><b>HOPE English</b> 客服輔助系統後台</a>
+        <div class="w3-right w3-hi`de-small">
+            <a href="logout.php" class="w3-bar-item w3-button">登出</a>
+        </div>
+    </div>
+</div>
+<div>
+    <div id="projects" style="background-color: #FFFFFF; height: 50px; width: 97.5%; margin-left:1.3%;">
+        <h2><FONT COLOR=white>SoberMotion</FONT></h2>
+    </div>
+</div>
+
+<div id="container">
+    <div id="footer" style="text-align:center;">
+        <p style="font-size:20px">學員資料</p>
+        <div class="tabs">
+            <ul class="tab-links">
+                <li class="active"><a href="#tab1">最近一次使用紀錄</a></li>
+                <li><a href="#tab2">一週使用紀錄</a></li>
+                <li><a href="#tab3">一個月使用紀錄</a></li>
+            </ul>
+ 
+            <div class="tab-content">
+                <div id="tab1" class="tab active">
+                    <table id="alcohol" class="display" width="100%"></table>
+                </div>
+                <div id="tab2" class="tab">
+                    <table id="problem" class="display" width="100%"></table>
+                </div>
+                <div id="tab3" class="tab">
+                    <table id="vehicaltag" class="display" width="100%"></table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        var alcohol = [
+            {
+                "0": 121321,
+                "1": "2019/05/21",
+                "2": "15:34",
+                "3": 4,
+                "4": 221,
+                "5": 14400,
+                "6": 0,
+                "7": "2019/12/21",
+                "8": "新生",
+                "9": "課程太難上不下去，已協助調整"
+            },
+            {
+                "0": 143221,
+                "1": "2019/05/29",
+                "2": "10:23",
+                "3": 0,
+                "4": 34,
+                "5": 3300,
+                "6": 0,
+                "7": "2019/08/23",
+                "8": "新生",
+                "9": "沒時間上課"
+            },
+            {
+                "0": 100081,
+                "1": "2019/04/11",
+                "2": "09:34",
+                "3": 0,
+                "4": 211,
+                "5": 14400,
+                "6": 3300,
+                "7": "2019/12/30",
+                "8": "新生",
+                "9": "找不到好的學習方式"
+            },
+            {
+                "0": 90338,
+                "1": "2019/05/21",
+                "2": "17:14",
+                "3": 5,
+                "4": 221,
+                "5": 10000,
+                "6": 0,
+                "7": "2019/08/30",
+                "8": "舊生",
+                "9": "課程太難上不下去"
+            },
+            {
+                "0": 109763,
+                "1": "2019/05/18",
+                "2": "14:45",
+                "3": 3,
+                "4": 188,
+                "5": 3200,
+                "6": 0,
+                "7": "2019/12/21",
+                "8": "新生",
+                "9": "手機沒辦法使用"
+            },
+            {
+                "0": 199201,
+                "1": "2019/05/19",
+                "2": "13:56",
+                "3": 1,
+                "4": 245,
+                "5": 4400,
+                "6": 0,
+                "7": "2019/12/31",
+                "8": "新生",
+                "9": "課程太難上不下去"
+            },
+            {
+                "0": 144521,
+                "1": "2019/05/22",
+                "2": "17:29",
+                "3": 1,
+                "4": 65,
+                "5": 14400,
+                "6": 0,
+                "7": "2019/12/30",
+                "8": "新生",
+                "9": "太忙沒時間上"
+            },
+            {
+                "0": 128737,
+                "1": "2019/05/13",
+                "2": "11:43",
+                "3": 0,
+                "4": 200,
+                "5": 14400,
+                "6": 0,
+                "7": "2019/10/31",
+                "8": "新生",
+                "9": "課程太難上不下去"
+            },
+            {
+                "0": 22312,
+                "1": "2019/05/11",
+                "2": "10:22",
+                "3": 2,
+                "4": 134,
+                "5": 12300,
+                "6": 0,
+                "7": "2019/11/21",
+                "8": "新生",
+                "9": "課程太難上不下去"
+            },
+            {
+                "0": 54673,
+                "1": "2019/05/14",
+                "2": "13:18",
+                "3": 1,
+                "4": 123,
+                "5": 14400,
+                "6": 14400,
+                "7": "2019/12/30",
+                "8": "舊生",
+                "9": "課程太難上不下去"
+            },
+
+        ];
+        var problem = [];
+        var vehicaltag = [];
+
+        /*
+        $.ajax({
+                type: 'post',
+                url: 'get_alcohol_data.php',
+                data: {userid: userid},
+                dataType: 'json',
+                async: false,
+                success: function(response) {
+                    len = response.length;
+                    for (var i = len-1; i > -1; i--){
+                        alcohol.push($.map(response[i], function(el) { return el }));
+                    }
+                }
+        });
+        */
+        
+
+
+        showalcohol();
+
+        jQuery(document).ready(function() {
+            jQuery('.tabs .tab-links a').on('click', function(e)  {
+                 currentAttrValue = jQuery(this).attr('href');
+     
+                // Show/Hide Tabs
+                jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+                // Change/remove current tab to active
+                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+     
+                e.preventDefault();
+                if (currentAttrValue == '#tab1'){
+                    showalcohol();
+                } else if (currentAttrValue == '#tab2'){
+                    showproblem();
+                } else if (currentAttrValue == '#tab3'){
+                    showvehicaltag();
+                }
+            });
+        });
+
+        function showalcohol(){
+            $(document).ready(function() {
+            $('#alcohol').DataTable( {
+                "order": [[ 0, "desc" ]],
+                destroy: true,
+                data: alcohol,
+                columns: [
+                    { title: "memberid" },
+                    { title: "客服聯絡日期" },
+                    { title: "客服聯絡時間" },
+                    { title: "courseIndex" },
+                    { title: "totalCourse" },
+                    { title: "本次購買金額" },
+                    { title: "預估續購金額" },
+                    { title: "課程過期時間" },
+                    { title: "新/舊生" },
+                    { title: "客服聯絡結果" }
+                ],
+                
+                "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                            /*
+                            if ( aData[2] >= 0.15 ){
+                                $('td', nRow).css('background-color', '#FFB6C1');
+                                //
+                                //console.log(iDisplayIndex);
+                            }
+                            */
+                        }
+                } );
+            } );
+        }
+
+        function showproblem(){
+            $(document).ready(function() {
+            $('#problem').DataTable( {
+                "order": [[ 0, "desc" ]],
+                destroy: true,
+                data: alcohol,
+                columns: [
+                    { title: "memberid" },
+                    { title: "客服聯絡日期" },
+                    { title: "客服聯絡時間" },
+                    { title: "courseIndex" },
+                    { title: "totalCourse" },
+                    { title: "本次購買金額" },
+                    { title: "預估續購金額" },
+                    { title: "課程過期時間" },
+                    { title: "新/舊生" },
+                    { title: "客服聯絡結果" }
+                ]
+            } );
+             } );
+        }
+
+        function showvehicaltag(){
+            $(document).ready(function() {
+            $('#vehicaltag').DataTable( {
+                "order": [[ 0, "desc" ]],
+                destroy: true,
+                data: alcohol,
+                columns: [
+                    { title: "memberid" },
+                    { title: "客服聯絡日期" },
+                    { title: "客服聯絡時間" },
+                    { title: "courseIndex" },
+                    { title: "totalCourse" },
+                    { title: "本次購買金額" },
+                    { title: "預估續購金額" },
+                    { title: "課程過期時間" },
+                    { title: "新/舊生" },
+                    { title: "客服聯絡結果" }
+                ]
+            } );
+             } );
+        }
+
+
+
+    </script>
+
+</div>
+</body>
+</html>
